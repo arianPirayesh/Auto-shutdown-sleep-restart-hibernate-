@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 public class Main {
 
     public static void main(String[] args) throws AWTException {
+
 	// write your code here
         Main td = new Main();
 
@@ -176,16 +177,16 @@ public class Main {
                     int lastIndexOfPreviousIdentifier=0;
                     if(Pattern.matches("([0-9]+[h])(.)*", time)) {
                          hour = Integer.parseInt(time.substring(lastIndexOfPreviousIdentifier, time.indexOf('h')));
-                        lastIndexOfPreviousIdentifier=time.indexOf('h');
+                        lastIndexOfPreviousIdentifier=time.indexOf('h')+1;
                     }
 
                     if(Pattern.matches("(.)*([0-9]+[m])(.)*", time)) {
-                         minutes = Integer.parseInt(time.substring(lastIndexOfPreviousIdentifier + 1, time.indexOf('m')));
-                        lastIndexOfPreviousIdentifier=time.indexOf('m');
+                         minutes = Integer.parseInt(time.substring(lastIndexOfPreviousIdentifier , time.indexOf('m')));
+                        lastIndexOfPreviousIdentifier=time.indexOf('m')+1;
                     }
 
                     if(Pattern.matches("(.)*([0-9]+[s])", time)) {
-                         seconds = Integer.parseInt(time.substring(lastIndexOfPreviousIdentifier + 1, time.indexOf('s')));
+                         seconds = Integer.parseInt(time.substring(lastIndexOfPreviousIdentifier , time.indexOf('s')));
                     }
                     //System.out.println(hour+" "+minutes+" "+seconds);
                     return (hour*3600+minutes*60+seconds)*1000;
